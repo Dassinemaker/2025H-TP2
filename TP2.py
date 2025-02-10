@@ -26,14 +26,27 @@ def load_csv(csv_path):
     patients_dict : dictionnaire python (dict)
         Dictionnaire composé des informations contenues dans le fichier csv
     """
-    patients_dict = {}
+    
 
     # TODO : Écrire votre code ici
+    csvfile = open(csv_path, newline='')
+    c = csv.reader(csvfile)
+    # vérification du format
+    #dico["test"]= valeur
+    c = list(c)
 
+    dico = {}
+    
+    for row in c[1:]:
+        patients_dict = {}
+        for i in range(1, len(c[0])):
+            patients_dict[c[0][i]] = row[i]
+        dico[row[0]] = patients_dict
 
+    
+            
     # Fin du code
-
-    return patients_dict
+    return dico
 
 ########################################################################################################## 
 # PARTIE 2 : Fusion des données (3 points)
